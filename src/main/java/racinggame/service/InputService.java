@@ -9,14 +9,14 @@ public class InputService {
     private static final String EMPTY_STRING = "";
 
 
-    public String[] getCarNames(String inputCarNames) {
+    public String[] parseCarNames(String inputCarNames) {
         String removedBlankInput = removeBlank(inputCarNames);
         Validator.checkIsBlank(removedBlankInput);
 
         return splitNameByComma(removedBlankInput);
     }
 
-    public int getTrial(String inputTrial) {
+    public int parseTrial(String inputTrial) {
         String removedBlankInput = removeBlank(inputTrial);
         Validator.checkIsBlank(removedBlankInput);
 
