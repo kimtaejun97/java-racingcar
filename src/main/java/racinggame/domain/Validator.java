@@ -12,7 +12,8 @@ public class Validator {
 
     public static void validatePossibleToStart(List<RacingCar> racingCars) {
         if (isPossibleToStart(racingCars)) {
-            throw new IllegalArgumentException(String.format("게임을 시작하려면 %d명 이상의 참가자가 필요합니다.", MINIMUM_PLAYER));
+            throw new IllegalArgumentException(
+                    String.format("게임을 시작하려면 %d명 이상의 참가자가 필요합니다.", MINIMUM_PLAYER));
         }
     }
 
@@ -22,7 +23,8 @@ public class Validator {
 
     public static void validateNameLength(String carName) {
         if (carName.length() > MAXIMUM_NAME_LENGTH) {
-            throw new IllegalArgumentException("자동차 이름의 글자 수는 5자 이하입니다.");
+            throw new IllegalArgumentException(
+                    String.format("자동차 이름의 글자 수는 %d자 이하입니다.", MAXIMUM_NAME_LENGTH));
         }
     }
 
@@ -35,7 +37,7 @@ public class Validator {
     }
 
     public static void checkIsBlank(String removedBlankInput) {
-        if(removedBlankInput.equals(EMPTY_STRING)){
+        if (removedBlankInput.equals(EMPTY_STRING)) {
             throw new IllegalArgumentException("값이 입력되지 않았습니다.");
         }
     }
