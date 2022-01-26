@@ -10,10 +10,10 @@ public class InputService {
 
 
     public String[] parseCarNames(String inputCarNames) {
-        String removedBlankInput = removeBlank(inputCarNames);
-        Validator.checkIsBlank(removedBlankInput);
+        String[] splitName = splitNameByComma(removeBlank(inputCarNames));
+        Validator.checkNameIsBlank(splitName);
 
-        return splitNameByComma(removedBlankInput);
+        return splitName;
     }
 
     public int parseTrial(String inputTrial) {

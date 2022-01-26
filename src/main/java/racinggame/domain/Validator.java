@@ -41,4 +41,12 @@ public class Validator {
             throw new IllegalArgumentException("값이 입력되지 않았습니다.");
         }
     }
+
+    public static void checkNameIsBlank(String[] splitName) {
+        for(String name: splitName){
+            if(name.equals(EMPTY_STRING)){
+                throw new IllegalArgumentException("RacingCar의 이름은 공백일 수 없습니다.");
+            }
+        }
+    }
 }
