@@ -1,12 +1,12 @@
 package racinggame.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import racinggame.domain.RacingCar;
 
 class InputServiceTest {
 
@@ -32,6 +32,20 @@ class InputServiceTest {
 
         // then
         assertThat(trial).isEqualTo(10);
+    }
+
+    @Test
+    void 시도횟수는_숫자인지_검증하는_로직_실패() {
+        String trial = "a";
+
+        assertThrows(IllegalArgumentException.class, () -> inputService.parseTrial(trial));
+    }
+
+    @Test
+    void 시도횟수는_숫자인지_검증하는_로직_성공() {
+        String trial = "5";
+
+        assertDoesNotThrow(() -> inputService.parseTrial(trial));
     }
 
     @Test
