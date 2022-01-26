@@ -20,7 +20,7 @@ public class InputService {
         String removedBlankInput = removeBlank(inputTrial);
 
         Validator.checkIsBlank(removedBlankInput);
-        Validator.isNumber(inputTrial);
+        Validator.isNumber(removedBlankInput);
 
         return Integer.parseInt(removedBlankInput);
     }
