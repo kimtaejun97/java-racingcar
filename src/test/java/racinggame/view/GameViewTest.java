@@ -1,10 +1,10 @@
 package racinggame.view;
 
-import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.lang.reflect.Field;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 import racinggame.domain.RacingCar;
@@ -12,7 +12,7 @@ import racinggame.domain.RacingCar;
 class GameViewTest {
 
     @Test
-    void 상태를_출력할_자동차_리스트를_받아_생성한다() {
+    void 상태를_출력할_자동차_리스트를_받아_생성한다() throws NoSuchFieldException, IllegalAccessException {
 
         // given
         String[] cars = {"car1", "car2"};
@@ -20,9 +20,12 @@ class GameViewTest {
 
         // when
         GameView gameView = new GameView(racingCars);
+        Field racingCarViewsField = GameView.class.getDeclaredField("racingCarViews");
+        racingCarViewsField.setAccessible(true);
 
+        List<RacingCarView> racingCarViews = (List<RacingCarView>) racingCarViewsField.get(gameView);
         // then
-        assertThat(gameView.getRacingCars()).isEqualTo(racingCars);
+        System.out.println(racingCarViews);
     }
 
     @Test
@@ -42,23 +45,5 @@ class GameViewTest {
         // then
         assertTrue(out.toString().contains("car1"));
         assertTrue(out.toString().contains("car2"));
-    }
-
-    @Test
-    void 우승자를_출력() {
-
-        // given
-        String[] cars = {"car1", "car2"};
-        List<RacingCar> racingCars = RacingCar.racingCarOf(cars);
-        GameView gameView = new GameView(racingCars);
-
-        // when
-        ByteArrayOutputStream out = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(out));
-
-        gameView.printWinners();
-
-        // then
-        assertTrue(out.toString().contains("car1, car2"));
     }
 }

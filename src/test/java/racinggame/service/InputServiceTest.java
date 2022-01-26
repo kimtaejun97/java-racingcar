@@ -16,7 +16,7 @@ class InputServiceTest {
         String inputTrial = "10";
 
         // when
-        int trial = inputService.getTrial(inputTrial);
+        int trial = inputService.parseTrial(inputTrial);
 
         // then
         assertThat(trial).isEqualTo(10);
@@ -26,7 +26,7 @@ class InputServiceTest {
     @ParameterizedTest
     void getTrial_불필요한_공백이_들어왔을_때_제거(String inputTrial) {
         // when
-        int trial = inputService.getTrial(inputTrial);
+        int trial = inputService.parseTrial(inputTrial);
 
         // then
         assertThat(trial).isEqualTo(10);
@@ -36,7 +36,7 @@ class InputServiceTest {
     void getCarNames_입력() {
         String inputCarNames = "car1, car2, car3";
 
-        String[] carNames = inputService.getCarNames(inputCarNames);
+        String[] carNames = inputService.parseCarNames(inputCarNames);
 
         assertThat(carNames[0]).isEqualTo("car1");
         assertThat(carNames[1]).isEqualTo("car2");
@@ -47,7 +47,7 @@ class InputServiceTest {
     void getCarNames_입력값에_불필요한_공백이_들어왔을_때_제거() {
         String inputCarNames = " car1, c  a r2, c ar3";
 
-        String[] carNames = inputService.getCarNames(inputCarNames);
+        String[] carNames = inputService.parseCarNames(inputCarNames);
 
         assertThat(carNames[0]).isEqualTo("car1");
         assertThat(carNames[1]).isEqualTo("car2");

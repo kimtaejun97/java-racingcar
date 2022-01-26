@@ -1,9 +1,8 @@
 package racinggame.view;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-import java.lang.reflect.Field;
+import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -13,20 +12,19 @@ import racinggame.domain.Utils;
 class RacingCarViewTest {
 
     @Test
-    void 생성자_테스트() throws NoSuchFieldException, IllegalAccessException {
-        RacingCar car = new RacingCar("car", 0);
-        RacingCarView racingCarView = new RacingCarView(car);
+    void 팩토리_메서드_테스트() {
 
-        Field racingCar = RacingCarView.class.getDeclaredField("racingCar");
-        racingCar.setAccessible(true);
-        assertNotNull(racingCar.get(racingCarView));
+        List<RacingCar> racingCars = RacingCar.racingCarOf(new String[]{"car1", "car2"});
+        List<RacingCarView> racingCarViews = RacingCarView.racingCarOf(racingCars);
+
+        assertThat(racingCarViews.size()).isEqualTo(2);
     }
 
     @ValueSource(ints = {1, 2, 3, 4, 5})
     @ParameterizedTest
     void drawCurrPosition(int position) {
-        RacingCar car = new RacingCar("car", 0);
-        RacingCarView racingCarView = new RacingCarView(car);
+        List<RacingCar> racingCars = RacingCar.racingCarOf(new String[]{"car1"});
+        RacingCarView racingCarView = RacingCarView.racingCarOf(racingCars).get(0);
 
         String currPositionView = racingCarView.drawCurrPosition();
 
