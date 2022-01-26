@@ -13,9 +13,4 @@ public class Utils {
         }
         return sb.toString();
     }
-
-    public static String getInput() {
-        Scanner scanner = new Scanner(System.in);
-        return scanner.nextLine();
-    }
 }

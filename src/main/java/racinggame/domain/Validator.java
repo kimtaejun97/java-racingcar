@@ -4,6 +4,7 @@ public class Validator {
 
     private static final int MINIMUM_PLAYER = 2;
     private static final int MAXIMUM_NAME_LENGTH = 5;
+    private static final String EMPTY_STRING = "";
 
     private Validator() {}
 
@@ -24,6 +25,12 @@ public class Validator {
             Integer.parseInt(trial);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("시도횟수는 숫자로 입력해주세요.");
+        }
+    }
+
+    public static void checkIsBlank(String removedBlankInput) {
+        if(removedBlankInput.equals(EMPTY_STRING)){
+            throw new IllegalArgumentException("값이 입력되지 않았습니다.");
         }
     }
 }

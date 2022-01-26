@@ -3,6 +3,7 @@ package racinggame.domain;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
+import racinggame.view.InputView;
 import racinggame.view.RacingCarView;
 
 public class RacingCar {
@@ -27,16 +28,12 @@ public class RacingCar {
     }
 
     public static List<RacingCar> racingCarOf(String[] carNames) {
-        List<RacingCar> racingCars;
-        while (true) {
+        List<RacingCar> racingCars = null;
             try {
                 racingCars = createRacingCars(carNames);
-                break;
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
-                carNames = Input.getCarNames();
             }
-        }
 
         return racingCars;
     }

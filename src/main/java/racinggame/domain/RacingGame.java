@@ -22,12 +22,12 @@ public class RacingGame {
 
     public void start() {
         for (int i = 0; i < trial; i++) {
-            System.out.println("계속 진행 하려면 아무키나 입력해 주세요.(종료 = q)");
-            String command = Utils.getInput();
+//            System.out.println("계속 진행 하려면 아무키나 입력해 주세요.(종료 = q)");
+//            String command = Utils.getInput();
 
-            if (isQuit(command)) {
-                System.exit(0);
-            }
+//            if (isQuit(command)) {
+//                System.exit(0);
+//            }
             progress();
 
             gameView.printProgress();
