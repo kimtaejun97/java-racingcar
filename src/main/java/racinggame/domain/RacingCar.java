@@ -23,18 +23,8 @@ public class RacingCar {
     }
 
     public static List<RacingCar> racingCarOf(String[] carNames) {
-        List<RacingCar> racingCars = null;
-            try {
-                racingCars = createRacingCars(carNames);
-            } catch (IllegalArgumentException e) {
-                System.out.println(e.getMessage());
-            }
-
-        return racingCars;
-    }
-
-    private static List<RacingCar> createRacingCars(String[] carNames) {
-        return Arrays.stream(carNames).map(RacingCar::new)
+        return Arrays.stream(carNames)
+                .map(RacingCar::new)
                 .collect(Collectors.toList());
     }
 

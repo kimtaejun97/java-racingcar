@@ -20,8 +20,20 @@ public class RacingGameController {
     }
 
     public List<RacingCar> getRacingCars() {
-        String[] carNames = inputService.parseCarNames(inputView.inputCarNames());
-        return RacingCar.racingCarOf(carNames);
+        List<RacingCar> racingCars;
+        String[] carNames;
+
+        while (true) {
+            try {
+                carNames = inputService.parseCarNames(inputView.inputCarNames());
+                racingCars = RacingCar.racingCarOf(carNames);
+                break;
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+
+        return racingCars;
     }
 
     public int getTrial() {
@@ -31,11 +43,11 @@ public class RacingGameController {
     public void startGame(List<RacingCar> racingCars, int trial) {
         RacingGame racingGame;
 
-        while(true){
+        while (true) {
             try {
                 racingGame = new RacingGame(racingCars);
                 break;
-            } catch (IllegalArgumentException e){
+            } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
                 racingCars = getRacingCars();
             }
