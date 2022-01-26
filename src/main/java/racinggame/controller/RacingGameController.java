@@ -41,7 +41,10 @@ public class RacingGameController {
             }
         }
         gameView = new GameView(racingCars);
+        start(racingGame, trial);
+    }
 
+    private void start(RacingGame racingGame, int trial) {
         for (int i = 0; i < trial; i++) {
             racingGame.progress();
             gameView.printProgress();
