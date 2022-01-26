@@ -1,5 +1,7 @@
 package racinggame.view;
 
+import java.util.List;
+import java.util.stream.Collectors;
 import racinggame.domain.RacingCar;
 import racinggame.domain.Utils;
 
@@ -7,8 +9,14 @@ public class RacingCarView {
 
     private RacingCar racingCar;
 
-    public RacingCarView(RacingCar racingCar) {
+    private RacingCarView(RacingCar racingCar) {
         this.racingCar = racingCar;
+    }
+
+    public static List<RacingCarView> racingCarOf(List<RacingCar> racingCars) {
+        return racingCars.stream()
+                .map(RacingCarView::new)
+                .collect(Collectors.toList());
     }
 
     public String drawCurrPosition() {
