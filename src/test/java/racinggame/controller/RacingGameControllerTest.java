@@ -2,6 +2,7 @@ package racinggame.controller;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import com.ginsberg.junit.exit.ExpectSystemExit;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.util.List;
@@ -35,5 +36,16 @@ class RacingGameControllerTest {
 
         int trial = controller.getTrial();
         assertThat(trial).isEqualTo(5);
+    }
+
+    @ExpectSystemExit
+    @Test
+    void checkIsRestart_q를_입력하면_종료된다() {
+        // given
+        InputStream inputStream = new ByteArrayInputStream("q".getBytes());
+        System.setIn(inputStream);
+
+        // then
+        controller.checkIsRestart();
     }
 }
