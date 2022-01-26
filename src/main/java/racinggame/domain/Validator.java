@@ -1,5 +1,7 @@
 package racinggame.domain;
 
+import java.util.List;
+
 public class Validator {
 
     private static final int MINIMUM_PLAYER = 2;
@@ -8,10 +10,14 @@ public class Validator {
 
     private Validator() {}
 
-    public static void validatePossibleToStart(String[] carNames) {
-        if (carNames.length < MINIMUM_PLAYER) {
-            throw new IllegalArgumentException("참가자는 2명 이상입니다.");
+    public static void validatePossibleToStart(List<RacingCar> racingCars) {
+        if (isPossibleToStart(racingCars)) {
+            throw new IllegalArgumentException(String.format("게임을 시작하려면 %d명 이상의 참가자가 필요합니다.", MINIMUM_PLAYER));
         }
+    }
+
+    private static boolean isPossibleToStart(List<RacingCar> racingCars) {
+        return racingCars.size() < MINIMUM_PLAYER;
     }
 
     public static void validateNameLength(String carName) {

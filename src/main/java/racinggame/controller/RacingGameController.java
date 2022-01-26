@@ -29,10 +29,20 @@ public class RacingGameController {
     }
 
     public void startGame(List<RacingCar> racingCars, int trial) {
-        for (int i = 0; i < trial; i++) {
-            gameView = new GameView(racingCars);
-            RacingGame racingGame = new RacingGame(racingCars);
+        RacingGame racingGame;
 
+        while(true){
+            try {
+                racingGame = new RacingGame(racingCars);
+                break;
+            } catch (IllegalArgumentException e){
+                System.out.println(e.getMessage());
+                racingCars = getRacingCars();
+            }
+        }
+        gameView = new GameView(racingCars);
+
+        for (int i = 0; i < trial; i++) {
             racingGame.progress();
             gameView.printProgress();
         }

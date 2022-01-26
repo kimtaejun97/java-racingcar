@@ -11,6 +11,7 @@ public class RacingGame {
     public RacingGame() {}
 
     public RacingGame(List<RacingCar> racingCars) {
+        Validator.validatePossibleToStart(racingCars);
         this.racingCars = racingCars;
     }
 
