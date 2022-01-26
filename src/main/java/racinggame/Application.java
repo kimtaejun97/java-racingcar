@@ -1,29 +1,27 @@
 package racinggame;
 
 import java.util.List;
-import racinggame.domain.Input;
+import racinggame.controller.RacingGameController;
 import racinggame.domain.RacingCar;
-import racinggame.domain.RacingGame;
-import racinggame.domain.Utils;
+import racinggame.service.InputService;
+import racinggame.view.InputView;
 
 public class Application {
 
     public static void main(String[] args) {
 
+        RacingGameController controller = new RacingGameController(
+                new InputView(),
+                new InputService());
+
         while (true) {
-            String[] carNames = Input.getCarNames();
-            int trial = Input.getTrial();
+            List<RacingCar> racingCars = controller.getRacingCars();
+            int trial = controller.getTrial();
 
-            List<RacingCar> racingCars = RacingCar.racingCarOf(carNames);
-            RacingGame racingGame = new RacingGame(racingCars, trial);
-            racingGame.start();
+            controller.startGame(racingCars, trial);
+            controller.printWinners(racingCars);
 
-            System.out.println("게임이 종료되었습니다. (종료 = q, 다시 시작 = 아무 키 입력)");
-            String command = Utils.getInput();
-
-            if (RacingGame.isQuit(command)) {
-                break;
-            }
+            controller.checkIsRestart();
         }
     }
 }
