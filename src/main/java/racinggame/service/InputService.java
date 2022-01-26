@@ -18,7 +18,9 @@ public class InputService {
 
     public int parseTrial(String inputTrial) {
         String removedBlankInput = removeBlank(inputTrial);
+
         Validator.checkIsBlank(removedBlankInput);
+        Validator.isNumber(inputTrial);
 
         return Integer.parseInt(removedBlankInput);
     }

@@ -37,7 +37,18 @@ public class RacingGameController {
     }
 
     public int getTrial() {
-        return inputService.parseTrial(inputView.inputTrial());
+        int trial;
+
+        while (true) {
+            try {
+                trial = inputService.parseTrial(inputView.inputTrial());
+                break;
+            } catch (IllegalArgumentException | ArithmeticException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+
+        return trial;
     }
 
     public void startGame(List<RacingCar> racingCars, int trial) {
