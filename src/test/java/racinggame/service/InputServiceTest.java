@@ -1,10 +1,12 @@
 package racinggame.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import racinggame.domain.RacingCar;
 
 class InputServiceTest {
 
@@ -52,5 +54,11 @@ class InputServiceTest {
         assertThat(carNames[0]).isEqualTo("car1");
         assertThat(carNames[1]).isEqualTo("car2");
         assertThat(carNames[2]).isEqualTo("car3");
+    }
+
+    @ValueSource(strings = {"", " ", "car1, ,car2"})
+    @ParameterizedTest
+    void 자동차이름_공백(String carNames) {
+        assertThrows(IllegalArgumentException.class, () -> inputService.parseCarNames(carNames));
     }
 }
