@@ -26,4 +26,14 @@ class RacingGameControllerTest {
         assertThat(racingCars.get(0).getCarName()).isEqualTo("car1");
         assertThat(racingCars.get(1).getCarName()).isEqualTo("car2");
     }
+
+    @Test
+    void getTrial() {
+        String userInput = "5";
+        InputStream inputStream = new ByteArrayInputStream(userInput.getBytes());
+        System.setIn(inputStream);
+
+        int trial = controller.getTrial();
+        assertThat(trial).isEqualTo(5);
+    }
 }
