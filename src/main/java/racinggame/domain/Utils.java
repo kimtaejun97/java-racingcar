@@ -1,7 +1,5 @@
 package racinggame.domain;
 
-import java.util.Scanner;
-
 public class Utils {
 
     private Utils() {}
