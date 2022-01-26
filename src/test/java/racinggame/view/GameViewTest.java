@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.junit.jupiter.api.Test;
+import racinggame.domain.Judge;
 import racinggame.domain.RacingCar;
 
 class GameViewTest {
@@ -44,5 +45,18 @@ class GameViewTest {
         // then
         assertTrue(out.toString().contains("car1 : -"));
         assertTrue(out.toString().contains("car2 : ---"));
+    }
+
+    @Test
+    void 우승자를_출력한다() {
+
+        //when
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+
+        gameView.printWinners(Judge.getWinners(racingCars));
+
+        //then
+        assertThat(out.toString()).contains("car2");
     }
 }
