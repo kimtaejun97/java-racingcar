@@ -1,7 +1,6 @@
 package racinggame.view;
 
 import java.util.List;
-import java.util.stream.Collectors;
 import racinggame.domain.RacingCar;
 
 public class GameView {
@@ -23,7 +22,7 @@ public class GameView {
     }
 
     public void printWinners(List<String> winners) {
-        String result = winners.stream().collect(Collectors.joining(DELIMITER));
+        String result = String.join(DELIMITER, winners);
         System.out.println("최종 우승자: " + result);
     }
 
