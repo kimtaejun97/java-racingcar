@@ -6,7 +6,6 @@ import racinggame.domain.RacingCar;
 public class GameView {
 
     private static final String DELIMITER = ", ";
-    public static final String QUIT = "q";
     protected final StringBuilder result = new StringBuilder();
 
     private List<CarResultView> carResultViews;
@@ -26,9 +25,5 @@ public class GameView {
 
     public void printResult() {
         System.out.print(result);
-    }
-
-    public static boolean isQuit(String command) {
-        return command.equals(QUIT);
     }
 }

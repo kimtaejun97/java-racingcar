@@ -83,8 +83,12 @@ public class RacingGameController {
     }
 
     public void checkIsRestart() {
-        if (gameView.isQuit(inputView.inputIsRestart())) {
+        if (isQuit(inputView.inputRestartCommand())) {
             System.exit(0);
         }
+    }
+
+    private boolean isQuit(String command) {
+        return command.equals(InputView.QUIT);
     }
 }
