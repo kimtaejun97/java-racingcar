@@ -70,8 +70,12 @@ public class RacingGameController {
     private void start(RacingGame racingGame, int trial) {
         for (int i = 0; i < trial; i++) {
             racingGame.progress();
-            gameView.printProgress();
+            gameView.saveProgress();
         }
+    }
+
+    public void printResult() {
+        gameView.printResult();
     }
 
     public void printWinners(List<RacingCar> racingCars) {

@@ -17,6 +17,7 @@ public class Application {
             int trial = controller.getTrial();
 
             controller.startGame(racingCars, trial);
+            controller.printResult();
             controller.printWinners(racingCars);
             controller.checkIsRestart();
         }

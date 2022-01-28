@@ -7,6 +7,7 @@ public class GameView {
 
     private static final String DELIMITER = ", ";
     public static final String QUIT = "q";
+    protected final StringBuilder result = new StringBuilder();
 
     private List<CarResultView> carResultViews;
 
@@ -14,16 +15,17 @@ public class GameView {
         carResultViews = CarResultView.racingCarOf(racingCars);
     }
 
-    public void printProgress() {
-        StringBuilder sb = new StringBuilder();
-        carResultViews.forEach(carView -> sb.append(carView.drawCurrResult()).append("\n"));
-
-        System.out.println(sb);
+    public void saveProgress() {
+        carResultViews.forEach(carView -> result.append(carView.drawCurrResult()).append("\n"));
     }
 
     public void printWinners(List<String> winners) {
         String result = String.join(DELIMITER, winners);
         System.out.println("최종 우승자: " + result);
+    }
+
+    public void printResult() {
+        System.out.print(result);
     }
 
     public static boolean isQuit(String command) {
