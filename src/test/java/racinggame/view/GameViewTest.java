@@ -34,13 +34,25 @@ class GameViewTest {
     }
 
     @Test
-    void 현재_자동차들의_상태를_출력한다() {
+    void 현재_자동차들의_상태를_저장한다() {
 
         // when
+        gameView.saveProgress();
+
+        // then
+        assertTrue(gameView.result.toString().contains("car1 : -"));
+        assertTrue(gameView.result.toString().contains("car2 : ---"));
+    }
+
+    @Test
+    void 게임_결과를_출력한다() {
+
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
 
-        gameView.printProgress();
+        // when
+        gameView.saveProgress();
+        gameView.printResult();
 
         // then
         assertTrue(out.toString().contains("car1 : -"));
