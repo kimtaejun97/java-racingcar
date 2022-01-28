@@ -10,6 +10,7 @@ import racinggame.view.InputView;
 
 public class RacingGameController {
 
+    private static final int NORMAL_EXIT_CODE = 0;
     private final InputView inputView;
     private final InputService inputService;
     private GameView gameView;
@@ -84,7 +85,7 @@ public class RacingGameController {
 
     public void checkIsRestart() {
         if (isQuit(inputView.inputRestartCommand())) {
-            System.exit(0);
+            System.exit(NORMAL_EXIT_CODE);
         }
     }
 
