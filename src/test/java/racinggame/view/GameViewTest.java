@@ -24,10 +24,10 @@ class GameViewTest {
     void 상태를_출력할_자동차_리스트를_받아_생성한다() throws NoSuchFieldException, IllegalAccessException {
 
         // when
-        Field racingCarViewsField = GameView.class.getDeclaredField("racingCarViews");
+        Field racingCarViewsField = GameView.class.getDeclaredField("carResultViews");
         racingCarViewsField.setAccessible(true);
 
-        List<RacingCarView> racingCarViews = (List<RacingCarView>) racingCarViewsField.get(gameView);
+        List<CarResultView> racingCarViews = (List<CarResultView>) racingCarViewsField.get(gameView);
         // then
 
         assertThat(racingCarViews.size()).isEqualTo(2);

@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Validator {
 
-    private static final int MINIMUM_PLAYER = 2;
+    public static final int MINIMUM_PLAYER = 2;
     private static final int MAXIMUM_NAME_LENGTH = 5;
     private static final String EMPTY_STRING = "";
 
@@ -43,8 +43,8 @@ public class Validator {
     }
 
     public static void checkNameIsBlank(String[] splitName) {
-        for(String name: splitName){
-            if(name.equals(EMPTY_STRING)){
+        for (String name : splitName) {
+            if (name.equals(EMPTY_STRING)) {
                 throw new IllegalArgumentException("RacingCar의 이름은 공백일 수 없습니다.");
             }
         }

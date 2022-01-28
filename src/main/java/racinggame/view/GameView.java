@@ -9,15 +9,15 @@ public class GameView {
     private static final String DELIMITER = ", ";
     private static final String QUIT = "q";
 
-    private List<RacingCarView> racingCarViews;
+    private List<CarResultView> carResultViews;
 
     public GameView(List<RacingCar> racingCars) {
-        racingCarViews = RacingCarView.racingCarOf(racingCars);
+        carResultViews = CarResultView.racingCarOf(racingCars);
     }
 
     public void printProgress() {
         StringBuilder sb = new StringBuilder();
-        racingCarViews.forEach(carView -> sb.append(carView.drawCurrPosition()));
+        carResultViews.forEach(carView -> sb.append(carView.drawCurrResult()).append("\n"));
 
         System.out.println(sb);
     }

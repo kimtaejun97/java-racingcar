@@ -25,8 +25,7 @@ public class RacingGame {
     }
 
     public int getRandomValue() {
-        int random = (int) Math.floor(Math.random() * RANGE_OF_RANDOM_NUMBER);
-        return random;
+        return (int) Math.floor(Math.random() * RANGE_OF_RANDOM_NUMBER);
     }
 
     public List<RacingCar> getRacingCars() {

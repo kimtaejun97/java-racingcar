@@ -10,9 +10,7 @@ public class Application {
 
     public static void main(String[] args) {
 
-        RacingGameController controller = new RacingGameController(
-                new InputView(),
-                new InputService());
+        RacingGameController controller = new RacingGameController(new InputView(), new InputService());
 
         while (true) {
             List<RacingCar> racingCars = controller.getRacingCars();
@@ -20,7 +18,6 @@ public class Application {
 
             controller.startGame(racingCars, trial);
             controller.printWinners(racingCars);
-
             controller.checkIsRestart();
         }
     }
