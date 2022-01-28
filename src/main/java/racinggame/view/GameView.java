@@ -7,7 +7,7 @@ import racinggame.domain.RacingCar;
 public class GameView {
 
     private static final String DELIMITER = ", ";
-    private static final String QUIT = "q";
+    public static final String QUIT = "q";
 
     private List<CarResultView> carResultViews;
 

@@ -3,14 +3,15 @@
 package racinggame.view;
 
 import java.util.Scanner;
+import racinggame.domain.Validator;
+import racinggame.service.InputService;
 
 public class InputView {
 
-    public InputView() {
-    }
+    public InputView() {}
 
     public String inputCarNames() {
-        System.out.println("경주할 자동차 이름을 ','로 구분해서 입력하세요.(2대 이상)");
+        System.out.printf("경주할 자동차 이름을 %s로 구분해서 입력하세요.(%d대 이상)\n", InputService.SEPARATOR, Validator.MINIMUM_PLAYER);
         return getInput();
     }
 
@@ -20,7 +21,7 @@ public class InputView {
     }
 
     public String inputIsRestart() {
-        System.out.println("게임이 종료되었습니다. (종료 = q, 다시 시작 = 아무 키 입력)");
+        System.out.printf("게임이 종료되었습니다. (종료 = %s, 다시 시작 = 아무 키 입력)\n", GameView.QUIT);
         return getInput();
     }
 
